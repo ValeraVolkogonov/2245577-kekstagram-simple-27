@@ -17,7 +17,7 @@ const pristine = new Pristine(userForm,
 const showModal = () => {
   imgUploadOverlay.classList.remove('hidden');
   document.body.classList.add('modal-open');
-  document.addEventListener('keydown', onEscapeKey);
+  document.addEventListener('keydown', onEscapeKeyPress);
 };
 
 const hideModal = () => {
@@ -26,22 +26,19 @@ const hideModal = () => {
   resetEffects();
   imgUploadOverlay.classList.add('hidden');
   document.body.classList.remove('modal-open');
-  document.removeEventListener('keydown', onEscapeKey);
+  document.removeEventListener('keydown', onEscapeKeyPress);
 };
 
-function onEscapeKey(evt) {
+function onEscapeKeyPress(evt) {
   if (isEscapeKey(evt)) {
     evt.preventDefault();
     hideModal();
   }
 }
 
-uploadFile.addEventListener('change', showModal, () => {
-  showModal();
-});
-closeButton.addEventListener('click', showModal, () => {
-  hideModal();
-});
+uploadFile.addEventListener('change', showModal);
+
+closeButton.addEventListener('click', hideModal);
 
 userForm.addEventListener('submit', (evt) => {
   if (!pristine.validate()) {
