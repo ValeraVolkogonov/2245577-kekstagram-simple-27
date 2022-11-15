@@ -12,7 +12,7 @@ const CommentsCount = {
   MAX: 200,
 };
 
-const photoDescription = [
+const photosDescription = [
   'На пляже',
   'Сегодня отличная погода',
   'Зацените какая  картина у меня получилась',
@@ -27,7 +27,7 @@ const photoDescription = [
 const createPhoto = (id) => ({
   id: id,
   url: `photos/${id + 1}.jpg`,
-  description: getRandomArrayElement(photoDescription),
+  description: getRandomArrayElement(photosDescription),
   likes: getRandomPositiveInteger(LikesCount.MIN, LikesCount.MAX),
   comments: getRandomPositiveInteger(CommentsCount.MIN, CommentsCount.MAX),
 });

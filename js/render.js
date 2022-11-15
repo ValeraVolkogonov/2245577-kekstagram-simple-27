@@ -1,9 +1,7 @@
 import {generatePhotos} from './data.js';
 
-
 const templatePicture = document.querySelector('#picture').content.querySelector('.picture');
 const picturesContainer = document.querySelector('.pictures');
-
 const picturesListFragment = document.createDocumentFragment();
 
 const photos = generatePhotos();

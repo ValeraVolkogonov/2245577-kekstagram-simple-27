@@ -1,6 +1,7 @@
 import { isEscapeKey } from './util.js';
 import { resetScale } from './scale.js';
 import { resetEffects } from './effects.js';
+
 const userForm = document.querySelector('.img-upload__form');
 const imgUploadOverlay = document.querySelector('.img-upload__overlay');
 const uploadFile = document.querySelector('#upload-file');
@@ -37,8 +38,13 @@ function onEscapeKeyPress(evt) {
 }
 
 uploadFile.addEventListener('change', showModal);
-
 closeButton.addEventListener('click', hideModal);
+
+userForm.addEventListener('click', (evt) => {
+  if (evt.target.className === 'img-upload__overlay') {
+    hideModal();
+  }
+});
 
 userForm.addEventListener('submit', (evt) => {
   if (!pristine.validate()) {
